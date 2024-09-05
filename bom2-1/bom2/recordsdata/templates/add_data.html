@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Data</title>
+    <link rel="stylesheet" href="{% static 'records/css/styles.css' %}">
+</head>
+<body>
+    <div class="add_data">
+    <h1>Select Equipment Type to Add Data</h1>
+    <a href="{% url 'equipment_form' 'tempering' %}" class="button">Tempering</a>
+    <a href="{% url 'equipment_form' 'washing' %}" class="button">Washing</a>
+    <a href="{% url 'equipment_form' 'preheating' %}" class="button">Preheating</a>
+    <a href="{% url 'equipment_form' 'conveyor' %}" class="button">Conveyor</a>
+    <a href="{% url 'equipment_form' 'furnace' %}" class="button">Furnace</a>
+    <a href="{% url 'equipment_form' 'front_door' %}" class="button">Front_door</a>
+    <a href="{% url 'equipment_form' 'rearconveyor' %}"class="button">Rear Conveyor</a>
+    <a href="{% url 'equipment_form' 'frontconveyor' %}"class="button">Front Conveyor</a>
+    
+</body>
+</html>

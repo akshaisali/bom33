@@ -1,0 +1,331 @@
+/* Base Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7f6; /* Light gray background */
+    color: #2c3e50;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #34495e;
+    font-weight: 700;
+    margin-top: 60px;
+    text-align: center;
+    font-size: 2.5em;
+}
+
+.container {
+    max-width: 900px; /* Adjusted max-width for a wider container */
+    margin: 60px auto;
+    padding: 30px; /* Reduced padding for a tighter layout */
+    background-color: #ffffff; /* White background */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    border-radius: 8px;
+    border-top: 8px solid #3498db; /* Accent border at the top */
+}
+
+.form-label {
+    font-weight: 500;
+    color: #34495e;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.form-select, .form-control {
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid #dce1e3;
+    font-size: 14px;
+    color: #34495e;
+    transition: border-color 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+.form-select:focus, .form-control:focus {
+    border-color: #3498db; /* Blue border on focus */
+    outline: none;
+}
+
+#component-section-washing,
+#component-section-furnace,
+#component-section-tempering {
+    background-color: #ecf0f1;
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 20px;
+    border-left: 4px solid #3498db; /* Blue accent border */
+}
+
+h3.bg-light {
+    background-color: #3498db;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Table Styles */
+/* Table Styles */
+.table {
+    width: 100%; /* Full width for better responsiveness */
+    border-collapse: collapse; /* Collapses borders to avoid double borders */
+    margin-top: 25px;
+    background-color: #ffffff;
+    border: 1px solid #dce1e3;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Add shadow for better depth */
+}
+
+.table th, .table td {
+    padding: 12px; /* Reduced padding for a more compact table */
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid #dce1e3;
+}
+
+.table th {
+    background-color: #3498db; /* Accent color for headers */
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray for even rows */
+}
+
+.table tr:hover {
+    background-color: #e3f2fd; /* Light blue highlight on hover */
+}
+
+.table td {
+    font-size: 14px; /* Slightly smaller text for compactness */
+}
+
+/* Responsive Table Styles */
+@media (max-width: 768px) {
+    .table {
+        border: 0; /* Remove border on small screens */
+        border-radius: 0; /* Remove border radius */
+    }
+
+    .table thead {
+        display: none; /* Hide headers on small screens */
+    }
+
+    .table tr {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .table td {
+        display: block;
+        text-align: right;
+        padding: 10px;
+        position: relative;
+        border: 0; /* Remove border for readability */
+    }
+
+    .table td::before {
+        content: attr(data-label); /* Add labels for each cell */
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding: 0 10px;
+        font-weight: bold;
+        color: #3498db;
+        background-color: #f9f9f9;
+        border-right: 1px solid #dce1e3;
+        text-align: left;
+        top: 0;
+    }
+
+    .table td:last-child {
+        border-bottom: 1px solid #dce1e3;
+    }
+}
+/* Button Styles */
+/* Ensure button styles are consistent */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    color: white;
+    background-color: #007BFF; /* Bootstrap primary color */
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Align button container to center if needed */
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+.col-3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+/* Navigation Styles */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    background: #03000e;
+    box-shadow: 0px 3px dodgerblue;
+    padding: 10px;
+    top: 0;
+    left: 0;
+}
+
+nav .logo {
+    color: #fff;
+    font-size: 22px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    padding: 0 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: "";
+    width: 0;
+    height: 1.7px;
+    background: dodgerblue;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav .menu {
+    display: none;
+}
+
+@media (max-width: 910px) {
+    nav .menu {
+        display: flex;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 56px;
+        width: 100%;
+        background: #03000e;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    nav ul li {
+        text-align: center;
+    }
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 576px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .form-label, .form-control, .form-select {
+        font-size: 14px;
+    }
+
+    .btn-primary, .button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+.add_data{
+    text-align: center;
+}
+.form1 {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form1 p {
+    margin: 0;
+    padding: 10px 0;
+}
+
+.form1 label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form1 input,
+.form1 select,
+.form1 textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form1 button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+.form1 button:hover {
+    background-color: #0056b3;
+}

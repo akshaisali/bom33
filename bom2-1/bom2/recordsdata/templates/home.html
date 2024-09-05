@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <script src="{% static 'records/js/script.js' %}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hicarb Engineering</title>
+    <link rel="stylesheet" href="{% static 'records/css/styles.css' %}">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom JavaScript -->
+
+<body>
+    <nav>
+        <div class="logo">MySite</div>
+        <div class="menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="{% url 'equipment_form' 'tempering' %}">Tempering</a></li>
+            <li><a href="{% url 'equipment_form' 'washing' %}">Washing</a></li>
+            <li><a href="{% url 'equipment_form' 'preheating' %}">Preheating</a></li>
+            <li><a href="{% url 'equipment_form' 'conveyor' %}">Conveyor</a></li>
+            <li><a href="{% url 'equipment_form' 'furnace' %}">Furnace</a></li>
+            <li><a href="{% url 'equipment_form' 'front_door' %}">Front Door</a></li>
+            <li><a href="{% url 'equipment_form' 'rearconveyor' %}">RearConveyor</a></li>
+            <li><a href="{% url 'equipment_form' 'frontconveyor' %}">FrontConveyor</a></li>
+        </ul>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">Welcome to Hicarb Engineering</h1>
+
+        <form method="post" action="{% url 'home' %}">
+            {% csrf_token %}
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="bom" class="form-label">Select Equipment BOM:</label>
+                    <select name="bom" id="bom" class="form-select" required>
+                        <option value="" disabled selected hidden>Select Equipment BOM</option>
+                        {% for value, display in equipment_choices %}
+                            <option value="{{ value }}">{{ display }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="col-md-6">
+                    <label for="model" class="form-label">Sele
+                        
+                        ct Model:</label>
+                    <select name="model" id="model" class="form-select" required>
+                        <option value="" disabled selected hidden>Select Model</option>
+                        {% for value, display in model_choices %}
+                            <option value="{{ value }}">{{ display }}</option>
+                        {% endfor %}
+                    </select>
+                    
+                </div>
+            </div>
+    
+            <button type="submit" class="btn btn-primary">Show Data</button>
+        </form>
+        
+        <!-- Component Sections -->
+        <div class="col-12" id="component-section-washing" style="display:none;">
+            <label class="form-label">Washing Equipment Components:</label><br>
+            <input type="checkbox" id="front_door_washing" name="components" value="Front Door">
+            <label for="front_door_washing"> Front Door</label><br>
+            <input type="checkbox" id="tank_washing" name="components" value="Tank">
+            <label for="tank_washing"> Tank</label><br>
+            <input type="checkbox" id="rear_conveyor_washing" name="components" value="Rear Conveyor">
+            <label for="rear_conveyor_washing"> Rear Conveyor</label><br>
+        </div>
+
+        <div class="col-12" id="component-section-furnace" style="display:none;">
+            <label class="form-label">Furnace Equipment Components:</label><br>
+            <input type="checkbox" id="component1_furnace" name="components" value="Component 1">
+            <label for="component1_furnace"> Component 1</label><br>
+            <input type="checkbox" id="component2_furnace" name="components" value="Component 2">
+            <label for="component2_furnace"> Component 2</label><br>
+            <input type="checkbox" id="component3_furnace" name="components" value="Component 3">
+            <label for="component3_furnace"> Component 3</label><br>
+        </div>
+
+        <div class="col-12" id="component-section-tempering" style="display:none;">
+            <label class="form-label">Tempering Equipment Components:</label><br>
+            <input type="checkbox" id="component1_tempering" name="components" value="Front Conveyor">
+            <label for="component1_tempering"> Front Conveyor</label><br>
+            <input type="checkbox" id="component2_tempering" name="components" value="Furnace">
+            <label for="component2_tempering"> Furnace</label><br>
+            <input type="checkbox" id="component3_tempering" name="components" value="Rear Conveyor">
+            <label for="component3_tempering"> Rear Conveyor</label><br>
+        </div>
+
+        <div class="col-12" id="component-section-conveyor" style="display:none;">
+            <label class="form-label">Conveyor Equipment Components:</label><br>
+            <input type="checkbox" id="component1_conveyor" name="components" value="Component 1">
+            <label for="component1_conveyor"> Component 1</label><br>
+            <input type="checkbox" id="component2_conveyor" name="components" value="Component 2">
+            <label for="component2_conveyor"> Component 2</label><br>
+            <input type="checkbox" id="component3_conveyor" name="components" value="Component 3">
+            <label for="component3_conveyor"> Component 3</label><br>
+        </div>
+
+        <div class="col-12" id="component-section-preheating" style="display:none;">
+            <label class="form-label">Preheating Equipment Components:</label><br>
+            <input type="checkbox" id="component1_preheating" name="components" value="Component 1PH">
+            <label for="component1_preheating"> Component 1PH</label><br>
+            <input type="checkbox" id="component2_preheating" name="components" value="Component 2PH">
+            <label for="component2_preheating"> Component 2PH</label><br>
+            <input type="checkbox" id="component3_preheating" name="components" value="Component 3PH">
+            <label for="component3_preheating"> Component 3PH</label><br>
+        </div>
+    
+        <div class="col-12" id="component-section-front_door" style="display:none;">
+            <label class="form-label">Front Door Components:</label><br>
+            <input type="checkbox" id="component1_front_door" name="components" value="Component FD80A">
+            <label for="component1_front_door"> Component FD80A</label><br>
+            <input type="checkbox" id="component2_front_door" name="components" value="Component FD100A">
+            <label for="component2_front_door"> Component FD100A</label><br>
+            <input type="checkbox" id="component3_front_door" name="components" value="Component FD120A">
+            <label for="component3_front_door"> Component FD120A</label><br>
+        </div>
+    
+        <div class="col-12" id="component-section-rear_door" style="display:none;">
+            <label class="form-label">Rear Door Components:</label><br>
+            <input type="checkbox" id="component1_rear_door" name="components" value="Component RD80A">
+            <label for="component1_rear_door"> Component RD80A</label><br>
+            <input type="checkbox" id="component2_rear_door" name="components" value="Component RD100A">
+            <label for="component2_rear_door"> Component RD100A</label><br>
+            <input type="checkbox" id="component3_rear_door" name="components" value="Component RD120A">
+            <label for="component3_rear_door"> Component RD120A</label><br>
+        </div>
+    
+        <div class="col-12" id="component-section-double_door" style="display:none;">
+            <label class="form-label">Double Door Components:</label><br>
+            <input type="checkbox" id="component1_double_door" name="components" value="Component DD80A">
+            <label for="component1_double_door"> Component DD80A</label><br>
+            <input type="checkbox" id="component2_double_door" name="components" value="Component DD100A">
+            <label for="component2_double_door"> Component DD100A</label><br>
+            <input type="checkbox" id="component3_double_door" name="components" value="Component DD120A">
+            <label for="component3_double_door"> Component DD120A</label><br>
+        </div>
+    
+        
+            <div id="furnace-data"></div>
+            <div id="frontconveyor-data" ></div>
+            <div id="rearconveyor-data"></div>
+            <div id="component-data"></div>
+            <div id="component-data"></div>
+         <meta name="csrf-token" content="{{ csrf_token }}">
+            </div>
+    
+          
+            
+         
+        </form>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

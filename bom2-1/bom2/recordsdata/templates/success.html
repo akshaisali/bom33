@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'records/css/styles.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <script type="text/javascript">
+        // Use the referrer URL passed from the view
+        var referrer = "{{ referrer|safe }}";
+
+        // Redirect to the referrer page after 3 seconds
+        setTimeout(function() {
+            if (referrer) {
+                window.location.href = referrer;
+            } else {
+                // Fallback to a default page if referrer is not available
+                window.location.href = "{% url 'home' %}";
+            }
+        }, 3000); // Redirect after 3 seconds
+    </script>
+</head>
+<body>
+    <h1>Successfully Added</h1>
+    <p style="text-align: center">You will be redirected to the previous page shortly...</p>
+</body>
+</html>

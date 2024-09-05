@@ -1,0 +1,39 @@
+{% if data_to_display %}
+    <h2>Data Results</h2>
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th>Equipment BOM</th>
+                <th>Model</th>
+                <th>Components</th>
+                <th>Specification</th>
+                <th>Make</th>
+                <th>Purpose</th>
+                <th>Quality</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in data_to_display %}
+                <tr>
+                    <td>{{ data.bom }}</td>
+                    <td>{{ data.model }}</td>
+                    <td>{{ data.components }}</td>
+                    <td>{{ data.specification }}</td>
+                    <td>{{ data.make }}</td>
+                    <td>{{ data.purpose }}</td>
+                    <td>{{ data.quality }}</td>
+                    <td>{{ data.price }}</td>
+                    <td>{{ data.total }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="9">No data available for the selected BOM, model, and component.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No data available for the selected BOM and model.</p>
+{% endif %}
